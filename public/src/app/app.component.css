@@ -1,0 +1,14 @@
+* {
+  vertical-align: top;
+}
+#cakes, #form {
+  display: inline-block;
+  width: 45%;
+}
+
+#form {
+  outline: 1px solid black;
+  padding: 5px;
+
+}
+

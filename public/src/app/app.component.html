@@ -1,0 +1,51 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+    <h1>
+        Rate my {{ title }}
+      </h1>
+  <div id="form">
+    <p>Submit a cake to be rated</p>
+    <hr>
+
+  <!-- <img src="https://cdn.shopify.com/s/files/1/2471/1240/products/daisy-cakes-four-layer-carrot-chocolate_920x.jpg?v=1521786570" alt="Hi"> -->
+  <p>{{newCake | json}}</p>
+  <form (submit)="addCake()">
+    <p>Baker name: <input type="text" name="newCake.name" [(ngModel)]="newCake.name"></p>
+    <p>Image url: <input type="text" name="newCake.image" [(ngModel)]="newCake.image"></p>
+    <input type="submit" value="Submit">
+
+  </form>
+</div>
+<div *ngFor="let cake of cakes" id="cakes">
+  <p>{{ cake.name }}</p>
+  <img (click)="onImageClick(cake._id)" src="{{cake.image}}" alt="A Cake" width="200px;">
+  <p>{{newComment | json }}</p>
+  <form (submit)="addComment(cake._id)">
+    <p><input type="number" name="newComment.rating" [(ngModel)]="newComment.rating"></p>
+    <p><input type="text" name="newComment.comment" [(ngModel)]="newComment.comment"></p>
+    <input type="submit" value="Rate!">
+    <!-- <select name="editCake.comments.rating" [(ngModel)]="editCake.comments.rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select> -->
+  </form>
+
+</div>
+<app-reviews *ngIf="oneCake" [selectedCake]="oneCake"></app-reviews>
+<!-- <div *ngIf="oneCake" id="cake">
+  <div *ngFor="let cake of oneCake">
+      <h1>Baked by {{ cake.name }}</h1>
+      <img [src]="cake.image" alt="Cake?" width="400px">
+
+      <div *ngFor="let comment of cake.comments">
+        <p>{{comment.comment}}</p>
+        <p>{{comment.rating}} stars</p>
+      </div>
+
+  </div>
+</div> -->
+
+<router-outlet></router-outlet>

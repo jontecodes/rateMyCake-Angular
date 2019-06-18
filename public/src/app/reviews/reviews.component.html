@@ -1,0 +1,11 @@
+<div id="cake" *ngIf="selectedCake">
+  <div *ngFor="let cake of selectedCake">
+    <h1>Baked by {{cake.name}}</h1>
+    <img [src]="cake.image" alt="Cake?">
+    <p> Average Rating: {{avg}}</p>
+    <div *ngFor="let comment of cake.comments">
+      <p>{{comment.comment}}</p>
+      <p>{{comment.rating}}</p>
+    </div>
+  </div>
+</div>
